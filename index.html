@@ -26,8 +26,8 @@
 
     /* اسم الشات */
     h1 {
-        font-size: 2.5rem; /* أصغر من قبل */
-        margin: 0;
+        font-size: 2.3rem; /* أصغر حجمًا */
+        margin: 0 0 20px 0;
         font-weight: 700;
         letter-spacing: 2px;
         animation: glow 2s infinite alternate;
@@ -39,39 +39,27 @@
         100% { text-shadow: 0 0 5px #b76cff, 0 0 10px #b76cff; }
     }
 
-    /* زر للجملة */
+    /* الزر الثابت للجملة */
     .btn {
         font-size: 1rem;
-        padding: 10px 25px;
-        background-color: #7c3aed;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
+        padding: 12px 28px;
+        background-color: #c084fc; /* لون فاتح وجميل */
+        color: #2c0a3f; /* نص داكن ليتباين مع اللون الفاتح */
+        border-radius: 12px;
         font-weight: 600;
-        margin-top: 15px;
-        transition: all 0.3s ease;
         display: inline-block;
-        text-decoration: none;
-    }
-
-    .btn:hover {
-        background-color: #9d4edd;
-        transform: scale(1.05);
+        margin-top: 15px;
+        cursor: default;
+        text-align: center;
     }
 
     /* رابط xat */
     .link {
         display: block;
-        margin-top: 20px;
+        margin-top: 25px;
         font-size: 1rem;
         color: #fff;
         text-decoration: underline;
-        transition: color 0.3s;
-    }
-
-    .link:hover {
-        color: #b76cff;
     }
 
     /* تأثيرات حركة النجوم */
@@ -108,7 +96,7 @@
 
     <div class="container">
         <h1>شات ميلودى</h1>
-        <a class="btn" href="#">نلتقى لنرتقى أصدقاء للابد</a>
+        <div class="btn">نلتقى لنرتقى أصدقاء للابد</div>
         <a class="link" href="https://xat.com/melodylovers" target="_blank">xat.com/melodylovers</a>
     </div>
 
