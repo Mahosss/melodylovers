@@ -6,7 +6,6 @@
 <title>شات ميلودى</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
-    /* ألوان وخلفية */
     body, html {
         height: 100%;
         margin: 0;
@@ -14,43 +13,65 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #2c0a3f, #5c0d73); /* بنفسجي غامق */
+        background: linear-gradient(135deg, #2c0a3f, #5c0d73);
         overflow: hidden;
         color: #fff;
         text-align: center;
     }
 
-    /* النص الرئيسي */
     .container {
         z-index: 10;
         animation: fadeIn 2s ease-in-out forwards;
     }
 
+    /* اسم الشات */
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem; /* أصغر من قبل */
         margin: 0;
         font-weight: 700;
         letter-spacing: 2px;
+        animation: glow 2s infinite alternate;
     }
 
-    p {
-        font-size: 1.5rem;
-        margin: 10px 0 20px;
+    @keyframes glow {
+        0% { text-shadow: 0 0 5px #b76cff, 0 0 10px #b76cff; }
+        50% { text-shadow: 0 0 15px #9d4edd, 0 0 25px #9d4edd; }
+        100% { text-shadow: 0 0 5px #b76cff, 0 0 10px #b76cff; }
     }
 
-    a {
+    /* زر للجملة */
+    .btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+        background-color: #7c3aed;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: all 0.3s ease;
         display: inline-block;
-        padding: 10px 20px;
-        background-color: #7c3aed; /* لون بنفسجي فاتح للزر */
-        color: white;
         text-decoration: none;
-        border-radius: 5px;
-        font-weight: 700;
-        transition: background 0.3s;
     }
 
-    a:hover {
+    .btn:hover {
         background-color: #9d4edd;
+        transform: scale(1.05);
+    }
+
+    /* رابط xat */
+    .link {
+        display: block;
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #fff;
+        text-decoration: underline;
+        transition: color 0.3s;
+    }
+
+    .link:hover {
+        color: #b76cff;
     }
 
     /* تأثيرات حركة النجوم */
@@ -87,12 +108,11 @@
 
     <div class="container">
         <h1>شات ميلودى</h1>
-        <p>فى زر نلتقى لنرتقى أصدقاء للابد</p>
-        <a href="https://xat.com/melodylovers" target="_blank">xat.com/melodylovers</a>
+        <a class="btn" href="#">نلتقى لنرتقى أصدقاء للابد</a>
+        <a class="link" href="https://xat.com/melodylovers" target="_blank">xat.com/melodylovers</a>
     </div>
 
 <script>
-    // إنشاء نجوم عشوائية
     const starsContainer = document.getElementById('stars');
     for(let i = 0; i < 100; i++) {
         const star = document.createElement('div');
