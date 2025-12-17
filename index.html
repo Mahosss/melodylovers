@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شات ميلودى</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    /* ألوان وخلفية */
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: 'Tajawal', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #2c0a3f, #5c0d73); /* بنفسجي غامق */
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+    }
+
+    /* النص الرئيسي */
+    .container {
+        z-index: 10;
+        animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    p {
+        font-size: 1.5rem;
+        margin: 10px 0 20px;
+    }
+
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #7c3aed; /* لون بنفسجي فاتح للزر */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 700;
+        transition: background 0.3s;
+    }
+
+    a:hover {
+        background-color: #9d4edd;
+    }
+
+    /* تأثيرات حركة النجوم */
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 1;
+    }
+
+    .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        0% { opacity: 0.2; }
+        50% { opacity: 1; }
+        100% { opacity: 0.2; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <h1>شات ميلودى</h1>
+        <p>فى زر نلتقى لنرتقى أصدقاء للابد</p>
+        <a href="https://xat.com/melodylovers" target="_blank">xat.com/melodylovers</a>
+    </div>
+
+<script>
+    // إنشاء نجوم عشوائية
+    const starsContainer = document.getElementById('stars');
+    for(let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const size = Math.random() * 3 + 1 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        starsContainer.appendChild(star);
+    }
+</script>
+</body>
+</html>
