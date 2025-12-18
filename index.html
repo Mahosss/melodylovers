@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شات ميلودى – احتفالات</title>
+<title>شات ميلودى | احتفالات</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -11,95 +11,126 @@ html,body{
     height:100%;
     margin:0;
     font-family:'Tajawal',sans-serif;
+    background:radial-gradient(circle at top,#5c0d73,#2c0a3f);
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#2c0a3f,#5c0d73);
     overflow:hidden;
     color:#fff;
-    text-align:center;
 }
 
 .container{
-    z-index:10;
+    text-align:center;
+    z-index:5;
 }
 
-/* اسم الشات */
+/* العنوان */
 h1{
     font-size:2.3rem;
-    margin:0 0 6px 0;
-    font-weight:700;
-    letter-spacing:2px;
-    text-shadow:0 0 12px #b76cff;
+    margin:0 0 6px;
+    text-shadow:0 0 15px #c084fc;
 }
 
-/* الجملة */
-.btn{
+.tagline{
     display:inline-block;
-    padding:10px 26px;
+    padding:10px 28px;
     background:#c084fc;
     color:#2c0a3f;
-    border-radius:12px;
-    font-size:1rem;
+    border-radius:14px;
     font-weight:600;
+    margin-bottom:30px;
 }
 
-/* صندوق الاحتفال */
-.celebration{
-    margin-top:25px;
-    background:rgba(255,255,255,0.08);
-    padding:18px 22px;
-    border-radius:16px;
-    backdrop-filter:blur(4px);
-}
-
-.celebration h2{
-    margin:0 0 10px 0;
-    font-size:1.2rem;
-    color:#e9d5ff;
-}
-
-/* الفايزين والخسرانين */
-.row{
+/* كروت النتيجة */
+.results{
     display:flex;
-    justify-content:space-between;
-    gap:20px;
-    font-size:1rem;
+    gap:40px;
+    justify-content:center;
+    position:relative;
+}
+
+.card{
+    width:220px;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(6px);
+    position:relative;
+}
+
+.card h2{
+    margin:0 0 12px;
+    font-size:1.2rem;
 }
 
 .win{
-    color:#bbf7d0;
-    font-weight:700;
+    box-shadow:0 0 20px rgba(134,239,172,.4);
 }
 
 .lose{
-    color:#fecaca;
+    box-shadow:0 0 20px rgba(248,113,113,.4);
+}
+
+.names{
+    font-size:1.05rem;
+    line-height:1.8;
     font-weight:700;
+}
+
+/* ألعاب نارية */
+.firework{
+    position:absolute;
+    bottom:-15px;
+    left:50%;
+    width:6px;
+    height:6px;
+    background:transparent;
+    border-radius:50%;
+    animation:shoot 1.8s infinite;
+}
+
+.win .firework::before,
+.lose .firework::before{
+    content:'';
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:currentColor;
+    border-radius:50%;
+    animation:explode 1.8s infinite;
+}
+
+.win{color:#86efac;}
+.lose{color:#fca5a5;}
+
+@keyframes shoot{
+    0%{transform:translate(-50%,0);opacity:1}
+    60%{transform:translate(-50%,-80px);opacity:1}
+    100%{opacity:0}
+}
+
+@keyframes explode{
+    0%{box-shadow:none}
+    60%{
+        box-shadow:
+        20px 0 currentColor,
+        -20px 0 currentColor,
+        0 20px currentColor,
+        0 -20px currentColor,
+        14px 14px currentColor,
+        -14px -14px currentColor,
+        -14px 14px currentColor,
+        14px -14px currentColor;
+    }
+    100%{box-shadow:none}
 }
 
 /* لينك */
 .link{
+    margin-top:30px;
     display:block;
-    margin-top:18px;
-    font-size:1rem;
     text-decoration:underline;
     color:#fff;
-}
-
-/* كونفيتي */
-.confetti{
-    position:absolute;
-    top:-10px;
-    width:8px;
-    height:8px;
-    opacity:.9;
-    animation:fall linear infinite;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-    }
 }
 </style>
 </head>
@@ -109,29 +140,22 @@ h1{
 <div class="container">
     <h1>شات ميلودى</h1>
 
-    <div class="celebration">
-        <h2>🎉 نتيجة التحدى</h2>
-        <div class="row">
-            <div class="win">🏆 الكسبانين<br>محمود – فريد</div>
-            <div class="lose">😅 الخسرانين<br>ريم – دوللى</div>
+    <div class="results">
+        <div class="card win">
+            <h2>🏆 الكسبانين</h2>
+            <div class="names">محمود<br>فريد</div>
+            <div class="firework"></div>
+        </div>
+
+        <div class="card lose">
+            <h2>😅 الخسرانين</h2>
+            <div class="names">ريم<br>دوللى</div>
+            <div class="firework"></div>
         </div>
     </div>
 
     </a>
 </div>
-
-<script>
-const colors = ["#c084fc","#f472b6","#fde68a","#86efac","#93c5fd"];
-for(let i=0;i<60;i++){
-    let c=document.createElement("div");
-    c.className="confetti";
-    c.style.left=Math.random()*100+"%";
-    c.style.background=colors[Math.floor(Math.random()*colors.length)];
-    c.style.animationDuration=(Math.random()*3+3)+"s";
-    c.style.width=c.style.height=(Math.random()*6+6)+"px";
-    document.body.appendChild(c);
-}
-</script>
 
 </body>
 </html>
