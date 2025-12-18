@@ -3,115 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شات ميلودى</title>
+<title>شات ميلودى – احتفالات</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: 'Tajawal', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #2c0a3f, #5c0d73);
-        overflow: hidden;
-        color: #fff;
-        text-align: center;
-    }
+html,body{
+    height:100%;
+    margin:0;
+    font-family:'Tajawal',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2c0a3f,#5c0d73);
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+}
 
-    .container {
-        z-index: 10;
-        animation: fadeIn 2s ease-in-out forwards;
-    }
+.container{
+    z-index:10;
+}
 
-    /* اسم الشات */
-    h1 {
-        font-size: 2.3rem; 
-        margin: 0 0 5px 0; /* قلل المسافة من 20px إلى 5px */
-        font-weight: 700;
-        letter-spacing: 2px;
-        animation: glow 2s infinite alternate;
-    }
+/* اسم الشات */
+h1{
+    font-size:2.3rem;
+    margin:0 0 6px 0;
+    font-weight:700;
+    letter-spacing:2px;
+    text-shadow:0 0 12px #b76cff;
+}
 
-    @keyframes glow {
-        0% { text-shadow: 0 0 5px #b76cff, 0 0 10px #b76cff; }
-        50% { text-shadow: 0 0 15px #9d4edd, 0 0 25px #9d4edd; }
-        100% { text-shadow: 0 0 5px #b76cff, 0 0 10px #b76cff; }
-    }
+/* الجملة */
+.btn{
+    display:inline-block;
+    padding:10px 26px;
+    background:#c084fc;
+    color:#2c0a3f;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:600;
+}
 
-    /* الزر الثابت للجملة */
-    .btn {
-        font-size: 1rem;
-        padding: 12px 28px;
-        background-color: #c084fc; 
-        color: #2c0a3f; 
-        border-radius: 12px;
-        font-weight: 600;
-        display: inline-block;
-        margin-top: 0; /* قلل المسافة بين الاسم والزر */
-        cursor: default;
-        text-align: center;
-    }
+/* صندوق الاحتفال */
+.celebration{
+    margin-top:25px;
+    background:rgba(255,255,255,0.08);
+    padding:18px 22px;
+    border-radius:16px;
+    backdrop-filter:blur(4px);
+}
 
-    /* رابط xat */
-    .link {
-        display: block;
-        margin-top: 20px;
-        font-size: 1rem;
-        color: #fff;
-        text-decoration: underline;
-    }
+.celebration h2{
+    margin:0 0 10px 0;
+    font-size:1.2rem;
+    color:#e9d5ff;
+}
 
-    /* تأثيرات حركة النجوم */
-    .stars {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        z-index: 1;
-    }
+/* الفايزين والخسرانين */
+.row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    font-size:1rem;
+}
 
-    .star {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        animation: twinkle 2s infinite alternate;
-    }
+.win{
+    color:#bbf7d0;
+    font-weight:700;
+}
 
-    @keyframes twinkle {
-        0% { opacity: 0.2; }
-        50% { opacity: 1; }
-        100% { opacity: 0.2; }
-    }
+.lose{
+    color:#fecaca;
+    font-weight:700;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
+/* لينك */
+.link{
+    display:block;
+    margin-top:18px;
+    font-size:1rem;
+    text-decoration:underline;
+    color:#fff;
+}
+
+/* كونفيتي */
+.confetti{
+    position:absolute;
+    top:-10px;
+    width:8px;
+    height:8px;
+    opacity:.9;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
     }
+}
 </style>
 </head>
-<body>
-    <div class="stars" id="stars"></div>
 
-    <div class="container">
-        <h1>شات ميلودى</h1>
-        <div class="btn">نلتقى لنرتقى أصدقاء للابد</div>
+<body>
+
+<div class="container">
+    <h1>شات ميلودى</h1>
+    <div class="btn">نلتقى لنرتقى أصدقاء للابد</div>
+
+    <div class="celebration">
+        <h2>🎉 نتيجة التحدى</h2>
+        <div class="row">
+            <div class="win">🏆 الكسبانين<br>محمود – فريد</div>
+            <div class="lose">😅 الخسرانين<br>ريم – دوللى</div>
+        </div>
     </div>
 
+    <a class="link" href="https://xat.com/melodylovers" target="_blank">
+        xat.com/melodylovers
+    </a>
+</div>
+
 <script>
-    const starsContainer = document.getElementById('stars');
-    for(let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        const size = Math.random() * 3 + 1 + 'px';
-        star.style.width = size;
-        star.style.height = size;
-        star.style.top = Math.random() * 100 + '%';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        starsContainer.appendChild(star);
-    }
+const colors = ["#c084fc","#f472b6","#fde68a","#86efac","#93c5fd"];
+for(let i=0;i<60;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"%";
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(Math.random()*3+3)+"s";
+    c.style.width=c.style.height=(Math.random()*6+6)+"px";
+    document.body.appendChild(c);
+}
 </script>
+
 </body>
 </html>
