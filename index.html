@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شات ميلودى | احتفالات</title>
+<title>شات ميلودى | Celebration</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -11,12 +11,13 @@ html,body{
     height:100%;
     margin:0;
     font-family:'Tajawal',sans-serif;
-    background:radial-gradient(circle at top,#5c0d73,#2c0a3f);
+    background:
+      radial-gradient(circle at top,#6d1b7b,#1f082e);
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
     color:#fff;
+    overflow:hidden;
 }
 
 .container{
@@ -26,111 +27,110 @@ html,body{
 
 /* العنوان */
 h1{
-    font-size:2.3rem;
+    font-size:2.2rem;
     margin:0 0 6px;
-    text-shadow:0 0 15px #c084fc;
+    letter-spacing:2px;
+    text-shadow:0 0 18px rgba(192,132,252,.7);
 }
 
 .tagline{
     display:inline-block;
-    padding:10px 28px;
-    background:#c084fc;
+    padding:10px 30px;
+    background:linear-gradient(135deg,#e9d5ff,#c084fc);
     color:#2c0a3f;
-    border-radius:14px;
+    border-radius:16px;
     font-weight:600;
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
-/* كروت النتيجة */
+/* كروت النتائج */
 .results{
     display:flex;
-    gap:40px;
+    gap:50px;
     justify-content:center;
-    position:relative;
 }
 
 .card{
-    width:220px;
-    padding:20px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(6px);
+    width:240px;
+    padding:28px 20px 40px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(8px);
     position:relative;
+    overflow:hidden;
 }
 
 .card h2{
-    margin:0 0 12px;
+    margin:0 0 14px;
     font-size:1.2rem;
-}
-
-.win{
-    box-shadow:0 0 20px rgba(134,239,172,.4);
-}
-
-.lose{
-    box-shadow:0 0 20px rgba(248,113,113,.4);
+    letter-spacing:1px;
 }
 
 .names{
     font-size:1.05rem;
-    line-height:1.8;
+    line-height:2;
     font-weight:700;
 }
 
-/* ألعاب نارية */
-.firework{
-    position:absolute;
-    bottom:-15px;
-    left:50%;
-    width:6px;
-    height:6px;
-    background:transparent;
-    border-radius:50%;
-    animation:shoot 1.8s infinite;
+/* الكسبانين */
+.win{
+    --glow:#86efac;
 }
 
-.win .firework::before,
-.lose .firework::before{
+.lose{
+    --glow:#e5e7eb;
+}
+
+/* هالة ضوء احترافية */
+.card::after{
     content:'';
     position:absolute;
-    width:6px;
-    height:6px;
-    background:currentColor;
+    bottom:-60px;
+    left:50%;
+    transform:translateX(-50%);
+    width:180px;
+    height:180px;
+    background:radial-gradient(circle,var(--glow),transparent 70%);
+    opacity:.55;
+    animation:pulse 3.5s infinite ease-in-out;
+}
+
+@keyframes pulse{
+    0%,100%{transform:translateX(-50%) scale(.9)}
+    50%{transform:translateX(-50%) scale(1.1)}
+}
+
+/* جزيئات ناعمة */
+.particle{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:4px;
+    height:4px;
+    background:var(--glow);
     border-radius:50%;
-    animation:explode 1.8s infinite;
+    opacity:.7;
+    animation:float 3s infinite ease-out;
 }
 
-.win{color:#86efac;}
-.lose{color:#fca5a5;}
-
-@keyframes shoot{
-    0%{transform:translate(-50%,0);opacity:1}
-    60%{transform:translate(-50%,-80px);opacity:1}
-    100%{opacity:0}
-}
-
-@keyframes explode{
-    0%{box-shadow:none}
-    60%{
-        box-shadow:
-        20px 0 currentColor,
-        -20px 0 currentColor,
-        0 20px currentColor,
-        0 -20px currentColor,
-        14px 14px currentColor,
-        -14px -14px currentColor,
-        -14px 14px currentColor,
-        14px -14px currentColor;
+@keyframes float{
+    from{
+        transform:translate(-50%,0);
+        opacity:.8;
     }
-    100%{box-shadow:none}
+    to{
+        transform:translate(calc(-50% + var(--x)), -140px);
+        opacity:0;
+    }
 }
 
 /* لينك */
 .link{
-    margin-top:30px;
+    margin-top:35px;
     display:block;
-    text-decoration:underline;
     color:#fff;
+    text-decoration:underline;
+    opacity:.85;
 }
 </style>
 </head>
@@ -144,18 +144,28 @@ h1{
         <div class="card win">
             <h2>🏆 الكسبانين</h2>
             <div class="names">محمود<br>فريد</div>
-            <div class="firework"></div>
         </div>
 
         <div class="card lose">
-            <h2>😅 الخسرانين</h2>
+            <h2>😌 الخسرانين</h2>
             <div class="names">ريم<br>دوللى</div>
-            <div class="firework"></div>
         </div>
     </div>
 
     </a>
 </div>
+
+<script>
+document.querySelectorAll('.card').forEach(card=>{
+    for(let i=0;i<14;i++){
+        let p=document.createElement('div');
+        p.className='particle';
+        p.style.setProperty('--x',`${Math.random()*120-60}px`);
+        p.style.animationDelay=Math.random()*3+'s';
+        card.appendChild(p);
+    }
+});
+</script>
 
 </body>
 </html>
